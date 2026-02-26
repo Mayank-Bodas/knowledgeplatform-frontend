@@ -36,8 +36,9 @@ src/
   - **Refactoring:** Debugging `Context` state. Solved a dashboard filtering bug by persisting the exact `username` in `AuthContext` local storage rather than relying solely on the email address. Fixed string cutoff logic so HTML tags are cleanly stripped before generating 100-character article summaries.
   - **API Design:** Bridging the frontend AI buttons to the backend REST endpoints and defining the expected payload formats for AI improvement and tag suggestions.
 - **What Was Reviewed/Corrected Manually:**
-  - Validated UI appearances, ensuring contrast ratios and layout padding looked pristine.
-  - Guided the agent to correct text overflow bugs for long strings in rendering containers.
+  - **Axios Interceptor Logic:** Used AI for standard component generation, but manually engineered the Axios request interceptors to seamlessly pull JWT tokens from `localStorage` and inject them as Bearer headers into every outbound API call.
+  - **Authentication Context:** Implemented the `AuthContext` to centrally manage the global user state across the React component tree alongside secure `ProtectedRoute` wrappers to guard private views.
+  - **Rich Text State & UI Integrity:** Manually managed the intricate state handoffs involving `react-quill-new`, and wrote specific CSS overriding logic to enforce `word-break: break-word` and handle potential layout-breaking string overflow anomalies caused by raw AI text rendering dynamically inside detail cards.
 
 ## 3️⃣ Setup Instructions
 
